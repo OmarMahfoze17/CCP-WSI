@@ -17,47 +17,62 @@ FoamFile
 
 solvers
 {
-    p
+    alpha.water
     {
-        solver          PBiCGStab;
-        preconditioner  DILU;
-        tolerance       1e-06;
-        relTol          0.01;
-    }
-
-    pFinal
-    {
-        $p;
-        relTol          0;
+        nAlphaCorr      1;
+        nAlphaSubCycles 3;
     }
 
     "pcorr.*"
     {
         solver          PCG;
-        preconditioner  DIC;
-        tolerance       1e-2;
-        relTol          0;
-    }
+        preconditioner
+        {
+            preconditioner  GAMG;
+            tolerance       1e-05;
+            relTol          0;
+            smoother        DICGaussSeidel;
+            cacheAgglomeration no;
+        }
 
-    "rho.*"
-    {
-        solver          diagonal;
         tolerance       1e-05;
         relTol          0;
+        maxIter         100;
     }
 
-    "(U|h|e|R|k|epsilon|omega)"
+    p_rgh
+    {
+        solver          GAMG;
+        tolerance       1e-08;
+        relTol          0.01;
+        smoother        DIC;
+    }
+
+    p_rghFinal
+    {
+        solver          PCG;
+        preconditioner
+        {
+            preconditioner  GAMG;
+            tolerance       2e-09;
+            relTol          0;
+            nVcycles        2;
+            smoother        DICGaussSeidel;
+            nPreSweeps      2;
+        }
+
+        tolerance       2e-09;
+        relTol          0;
+        maxIter         20;
+    }
+
+    U
     {
         solver          smoothSolver;
-        smoother        symGaussSeidel;
-        tolerance       1e-05;
-        relTol          0.1;
-    }
-
-    "(U|h|e|R|k|epsilon|omega)Final"
-    {
-        $U;
+        smoother        GaussSeidel;
+        tolerance       1e-06;
         relTol          0;
+        nSweeps         1;
     }
 
     cellMotionUx
@@ -67,26 +82,39 @@ solvers
         tolerance       1e-08;
         relTol          0;
     }
+
+    cellMotionUxFinal
+    {
+        solver          PCG;
+        preconditioner
+        {
+            preconditioner  GAMG;
+            tolerance       2e-09;
+            relTol          0;
+            nVcycles        2;
+            smoother        DICGaussSeidel;
+            nPreSweeps      2;
+        }
+
+    }
 }
 
 PIMPLE
 {
-    momentumPredictor   yes;
-    correctPhi          yes;
-    nOuterCorrectors    2;
-    nCorrectors         2;
-    transonic           yes;
+    momentumPredictor no;
+    nCorrectors     2;
     nNonOrthogonalCorrectors 0;
+    correctPhi      no;
 
-    rhoMin              0.1;
-    rhoMax              100.0;
+    pRefPoint       (0 0 0);
+    pRefValue       1e5;
 }
 
 relaxationFactors
 {
     equations
     {
-        ".*"        1;
+        ".*"            1;
     }
 }
 

@@ -15,8 +15,6 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-fluxScheme      Kurganov;
-
 ddtSchemes
 {
     default         Euler;
@@ -29,29 +27,24 @@ gradSchemes
 
 divSchemes
 {
-    default         none;
-    div(tauMC)      Gauss linear;
+    div(rhoPhi,U)  Gauss vanLeerV;
+    div(phi,alpha)  Gauss interfaceCompression vanLeer 1;
+    div(((rho*nuEff)*dev2(T(grad(U))))) Gauss linear;
 }
 
 laplacianSchemes
 {
     default         Gauss linear corrected;
-
-    laplacian(diffusivity,cellMotionU) Gauss linear uncorrected;
 }
 
 interpolationSchemes
 {
     default         linear;
-    reconstruct(rho) vanLeer;
-    reconstruct(U)  vanLeerV;
-    reconstruct(T)  vanLeer;
 }
 
 snGradSchemes
 {
     default         corrected;
 }
-
 
 // ************************************************************************* //

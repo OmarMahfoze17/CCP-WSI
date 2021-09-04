@@ -22,53 +22,52 @@ FoamFile
         type            wall;
         inGroups        List<word> 1(wall);
         nFaces          85;
-        startFace       3665;
+        startFace       5045;
     }
     farFieldMoving
     {
         type            patch;
         nFaces          50;
-        startFace       3750;
+        startFace       5130;
     }
-    fixedWall
+    rightWall
     {
         type            wall;
         inGroups        List<word> 1(wall);
         nFaces          35;
-        startFace       3800;
+        startFace       5180;
     }
     axis
     {
-        type            empty;
-        inGroups        List<word> 1(empty);
-        nFaces          0;
-        startFace       3835;
+        type            patch;
+        nFaces          55;
+        startFace       5215;
     }
-    left
+    leftWall
     {
         type            patch;
         nFaces          30;
-        startFace       3835;
+        startFace       5270;
     }
     farField
     {
         type            patch;
-        nFaces          35;
-        startFace       3865;
+        nFaces          55;
+        startFace       5300;
     }
     back
     {
-        type            wedge;
-        inGroups        List<word> 1(wedge);
-        nFaces          1900;
-        startFace       3900;
+        type            empty;
+        inGroups        List<word> 1(empty);
+        nFaces          2600;
+        startFace       5355;
     }
     front
     {
-        type            wedge;
-        inGroups        List<word> 1(wedge);
-        nFaces          1900;
-        startFace       5800;
+        type            empty;
+        inGroups        List<word> 1(empty);
+        nFaces          2600;
+        startFace       7955;
     }
 )
 

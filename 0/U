@@ -10,6 +10,7 @@ FoamFile
     version     2.0;
     format      ascii;
     class       volVectorField;
+    location    "0";
     object      U;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
@@ -31,31 +32,37 @@ boundaryField
         type            noSlip;
     }
 
-    fixedWall
+    rightWall
     {
         type            noSlip;
     }
 
-    left
+    axis
     {
-        type            pressureInletOutletVelocity;
-        value           $internalField;
+        type            noSlip;
+    }
+
+    leftWall
+    {
+        type            noSlip;
     }
 
     farField
     {
-        type            noSlip;
+        type            pressureInletOutletVelocity;
+        value           uniform (0 0 0);
     }
 
     back
     {
-        type            wedge;
+        type            empty;
     }
 
     front
     {
-        type            wedge;
+        type            empty;
     }
 }
+
 
 // ************************************************************************* //

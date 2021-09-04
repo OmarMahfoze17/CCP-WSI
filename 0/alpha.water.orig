@@ -10,13 +10,13 @@ FoamFile
     version     2.0;
     format      ascii;
     class       volScalarField;
-    object      T;
+    object      alpha.water;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 0 0 1 0 0 0];
+dimensions      [0 0 0 0 0 0 0];
 
-internalField   uniform 300;
+internalField   uniform 0;
 
 boundaryField
 {
@@ -30,31 +30,40 @@ boundaryField
         type            zeroGradient;
     }
 
-    fixedWall
+    rightWall
     {
         type            zeroGradient;
     }
 
-    left
+    axis
     {
-        type            inletOutlet;
-        inletValue      $internalField;
+        type            zeroGradient;
+    }
+
+    leftWall
+    {
+        type            zeroGradient;
     }
 
     farField
     {
-        type            zeroGradient;
+        type            inletOutlet;
+        inletValue      uniform 0;
+        value           uniform 0;
     }
 
     back
     {
-        type            wedge;
+        type            empty;
     }
 
     front
     {
-        type            wedge;
+        type            empty;
     }
 }
+
+
+// ************************************************************************* //
 
 // ************************************************************************* //

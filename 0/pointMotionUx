@@ -23,18 +23,25 @@ boundaryField
     movingWall
     {
         type            uniformFixedValue;
-        uniformValue    constant 160;
+        uniformValue    constant 0.2;
     }
     farFieldMoving
     {
         type            slip;
     }
-    fixedWall
+    rightWall
     {
         type            uniformFixedValue;
         uniformValue    constant 0;
     }
-    left
+
+    axis
+    {
+        type            slip;
+        // uniformValue    constant 0;
+    }
+
+    leftWall
     {
         type            uniformFixedValue;
         uniformValue    constant 0;
@@ -45,11 +52,11 @@ boundaryField
     }
     back
     {
-        type            wedge;
+        type            empty;
     }
     front
     {
-        type            wedge;
+        type            empty;
     }
 }
 
