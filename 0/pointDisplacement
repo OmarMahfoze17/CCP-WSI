@@ -1,0 +1,72 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM Extend Project: Open Source CFD        |
+|  \\    /   O peration     | Version:  1.6-ext                               |
+|   \\  /    A nd           | Web:      www.extend-project.de                 |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       pointVectorField;
+    location    "0.01";
+    object      pointDisplacement;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 1 0 0 0 0 0];
+
+internalField   uniform (0 0 0);
+
+boundaryField
+{
+    movingWall
+    {
+        type            oscillatingDisplacement;
+        axis            (1 0 0);
+        amplitude       (0.01 0 0);
+        omega           2.28;
+        value           uniform (0 0 0);
+    }
+
+    farFieldMoving
+    {
+        type            oscillatingDisplacement;
+        axis            (1 0 0);
+        amplitude       (0.01 0 0);
+        omega           2.28;
+        value           uniform (0 0 0);
+    }
+    rightWall
+    {
+        type            uniformFixedValue;
+        uniformValue    constant (0 0 0);
+    }
+
+    axis
+    {
+        type            slip;
+        // uniformValue    constant 0;
+    }
+
+    leftWall
+    {
+        type            uniformFixedValue;
+        uniformValue    constant (0 0 0);
+    }
+    farField
+    {
+        type            slip;
+    }
+    back
+    {
+        type            empty;
+    }
+    front
+    {
+        type            empty;
+    }
+}
+
+// ************************************************************************* //
