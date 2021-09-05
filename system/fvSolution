@@ -17,10 +17,19 @@ FoamFile
 
 solvers
 {
-    alpha.water
+    "alpha.water.*"
     {
-        nAlphaCorr      1;
-        nAlphaSubCycles 3;
+        nAlphaCorr      2;
+        nAlphaSubCycles 1;
+
+        MULESCorr       yes;
+        nLimiterIter    5;
+        alphaApplyPrevCorr  yes;
+
+        solver          smoothSolver;
+        smoother        symGaussSeidel;
+        tolerance       1e-8;
+        relTol          0;
     }
 
     "pcorr.*"
@@ -29,7 +38,7 @@ solvers
         preconditioner
         {
             preconditioner  GAMG;
-            tolerance       1e-05;
+            tolerance       1e-5;
             relTol          0;
             smoother        DICGaussSeidel;
             cacheAgglomeration no;
@@ -43,7 +52,7 @@ solvers
     p_rgh
     {
         solver          GAMG;
-        tolerance       1e-08;
+        tolerance       1e-8;
         relTol          0.01;
         smoother        DIC;
     }
@@ -54,14 +63,14 @@ solvers
         preconditioner
         {
             preconditioner  GAMG;
-            tolerance       2e-09;
+            tolerance       1e-8;
             relTol          0;
             nVcycles        2;
             smoother        DICGaussSeidel;
             nPreSweeps      2;
         }
 
-        tolerance       2e-09;
+        tolerance       1e-8;
         relTol          0;
         maxIter         20;
     }
@@ -70,8 +79,8 @@ solvers
     {
         solver          smoothSolver;
         smoother        GaussSeidel;
-        tolerance       1e-06;
-        relTol          0;
+        tolerance       1e-6;
+        relTol          0.1;
         nSweeps         1;
     }
 
@@ -101,10 +110,11 @@ solvers
 
 PIMPLE
 {
-    momentumPredictor no;
-    nCorrectors     2;
+    momentumPredictor   no;
+    nOuterCorrectors    3;
+    nCorrectors         1;
     nNonOrthogonalCorrectors 0;
-    correctPhi      no;
+    correctPhi          yes;
 
     pRefPoint       (0 0 0);
     pRefValue       1e5;

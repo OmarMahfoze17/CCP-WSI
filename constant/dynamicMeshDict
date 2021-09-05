@@ -22,7 +22,7 @@ motionSolverLibs ("libfvMotionSolvers.so");
 motionSolver    velocityComponentLaplacian;
 
 component       x;
-diffusivity     directional (1 200 0);
+diffusivity     directional (1 1 0);
 
 
 // ************************************************************************* //
