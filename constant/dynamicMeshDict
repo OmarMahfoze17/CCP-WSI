@@ -102,7 +102,7 @@ sixDoFRigidBodyMotionCoeffs
      refAttachmentPt                       (-.07 0.0025 0.005);
      stiffness                             0.5;  //units of N/m
      damping                               0;   //units of Ns/m
-     restLength                            0.02;   //units of m
+     restLength                            0.03;   //units of m
         }
 
         // Damper
