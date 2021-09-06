@@ -22,8 +22,8 @@ boundaryField
 {
     movingWall
     {
-        type            oscillatingDisplacement;
-        uniformValue    constant 0.5;
+        type            uniformFixedValue;
+        uniformValue    constant 0.2;
     }
     farFieldMoving
     {

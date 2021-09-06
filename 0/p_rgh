@@ -23,55 +23,38 @@ boundaryField
     movingWall
     {
         type            fixedFluxPressure;
-	      gradient        uniform 0;
         value           uniform 0;
     }
 
-    movingLowerWall
+    farFieldMoving
     {
         type            fixedFluxPressure;
-	      gradient        uniform 0;
         value           uniform 0;
     }
 
     rightWall
     {
         type            fixedFluxPressure;
-        gradient        uniform 0;
+        value           uniform 0;
+    }
+
+    axis
+    {
+        type            fixedFluxPressure;
         value           uniform 0;
     }
 
     leftWall
     {
         type            fixedFluxPressure;
-        gradient        uniform 0;
         value           uniform 0;
     }
 
-    bottomWallLeft
-    {
-        type            fixedFluxPressure;
-        gradient        uniform 0;
-        value           uniform 0;
-    }
-
-    bottomWallRight
-    {
-        type            fixedFluxPressure;
-        gradient        uniform 0;
-        value           uniform 0;
-    }
-
-    topField
+    farField
     {
         type            totalPressure;
-        rho             rho;
-        psi             none;
-        gamma           1;
         p0              uniform 0;
-        value           uniform 0;
     }
-
 
     back
     {

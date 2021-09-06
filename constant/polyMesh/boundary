@@ -15,67 +15,59 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-9
+8
 (
     movingWall
     {
         type            wall;
         inGroups        List<word> 1(wall);
-        nFaces          20;
-        startFace       1930;
+        nFaces          85;
+        startFace       5930;
     }
-    movingLowerWall
-    {
-        type            wall;
-        inGroups        List<word> 1(wall);
-        nFaces          10;
-        startFace       1950;
-    }
-    topField
+    farFieldMoving
     {
         type            patch;
-        nFaces          20;
-        startFace       1960;
-    }
-    bottomWallLeft
-    {
-        type            patch;
-        nFaces          20;
-        startFace       1980;
-    }
-    bottomWallRight
-    {
-        type            patch;
-        nFaces          10;
-        startFace       2000;
+        nFaces          50;
+        startFace       6015;
     }
     rightWall
     {
         type            wall;
         inGroups        List<word> 1(wall);
-        nFaces          20;
-        startFace       2010;
+        nFaces          35;
+        startFace       6065;
+    }
+    axis
+    {
+        type            patch;
+        nFaces          70;
+        startFace       6100;
     }
     leftWall
     {
-        type            wall;
-        inGroups        List<word> 1(wall);
-        nFaces          40;
-        startFace       2030;
+        type            patch;
+        nFaces          30;
+        startFace       6170;
     }
-    front
+    farField
     {
-        type            empty;
-        inGroups        List<word> 1(empty);
-        nFaces          1000;
-        startFace       2070;
+        type            patch;
+        nFaces          70;
+        startFace       6200;
     }
     back
     {
         type            empty;
         inGroups        List<word> 1(empty);
-        nFaces          1000;
-        startFace       3070;
+        nFaces          3050;
+        startFace       6270;
+    }
+    front
+    {
+        type            empty;
+        inGroups        List<word> 1(empty);
+        nFaces          3050;
+        startFace       9320;
     }
 )
 

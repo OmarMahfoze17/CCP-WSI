@@ -1,16 +1,16 @@
 /*--------------------------------*- C++ -*----------------------------------*\
-| =========                 |                                                 |
-| \\      /  F ield         | OpenFOAM Extend Project: Open Source CFD        |
-|  \\    /   O peration     | Version:  1.6-ext                               |
-|   \\  /    A nd           | Web:      www.extend-project.de                 |
-|    \\/     M anipulation  |                                                 |
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  8
+     \\/     M anipulation  |
 \*---------------------------------------------------------------------------*/
 FoamFile
 {
     version     2.0;
-    format      ascii;
+    format      binary;
     class       pointVectorField;
-    location    "0.01";
+    location    "0";
     object      pointDisplacement;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
@@ -23,37 +23,22 @@ boundaryField
 {
     movingWall
     {
-        type            oscillatingDisplacement;
-        axis            (1 0 0);
-        amplitude       (-0.10 0 0);
-        omega           8;
-        value           uniform (0 0 0);
+        type            calculated;
     }
 
-    movingLowerWall
+    farFieldMoving
     {
-        type            slip;
+        type            calculated;
     }
-
-    topField
-    {
-        type            slip;
-    }
-
-    bottomWallLeft
-    {
-        type            slip;
-    }
-
-    bottomWallRight
-    {
-        type            slip;
-    }
-
     rightWall
     {
         type            uniformFixedValue;
         uniformValue    constant (0 0 0);
+    }
+
+    axis
+    {
+        type            slip;
     }
 
     leftWall
@@ -62,14 +47,21 @@ boundaryField
         uniformValue    constant (0 0 0);
     }
 
+    farField
+    {
+        type            slip;
+    }
+
     back
     {
         type            empty;
     }
+
     front
     {
         type            empty;
     }
 }
+
 
 // ************************************************************************* //
