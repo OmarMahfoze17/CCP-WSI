@@ -61,9 +61,18 @@ boundary
         faces
         (
             (1 2 10 9)
+        );
+    }
+
+    movingTopWall
+    {
+        type wall;
+        faces
+        (
             (10 12 4 2)
         );
     }
+
     farFieldMoving
     {
         type patch;

@@ -27,6 +27,12 @@ boundaryField
         value           $internalField;
     }
 
+    movingTopWall
+    {
+        type            movingWallVelocity;
+        value           $internalField;
+    }
+
     farFieldMoving
     {
         type            noSlip;

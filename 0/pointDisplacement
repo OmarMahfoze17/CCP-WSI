@@ -26,9 +26,14 @@ boundaryField
         type            calculated;
     }
 
+    movingTopWall
+    {
+        type            slip;
+    }
+
     farFieldMoving
     {
-        type            calculated;
+        type            slip;
     }
     rightWall
     {

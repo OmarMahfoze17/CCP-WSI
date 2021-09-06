@@ -25,6 +25,11 @@ boundaryField
         type            zeroGradient;
     }
 
+    movingTopWall
+    {
+        type            zeroGradient;
+    }
+
     farFieldMoving
     {
         type            zeroGradient;

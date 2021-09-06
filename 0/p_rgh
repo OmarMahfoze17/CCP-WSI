@@ -26,6 +26,12 @@ boundaryField
         value           uniform 0;
     }
 
+    movingTopWall
+    {
+        type            fixedFluxPressure;
+        value           uniform 0;
+    }
+
     farFieldMoving
     {
         type            fixedFluxPressure;

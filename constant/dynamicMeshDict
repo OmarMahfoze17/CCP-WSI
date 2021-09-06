@@ -60,8 +60,8 @@ sixDoFRigidBodyMotionCoeffs
     };
 
     report          on;
-    accelerationRelaxation 0.3;
-    accelerationDamping 0.3;
+    accelerationRelaxation 0.7;
+    accelerationDamping 0.9;
 
     solver
     {
@@ -101,7 +101,7 @@ sixDoFRigidBodyMotionCoeffs
      anchor                                (-0.1 .0025 .005);
      refAttachmentPt                       (-.07 0.0025 0.005);
      stiffness                             0.5;  //units of N/m
-     damping                               0;   //units of Ns/m
+     damping                               0.02;   //units of Ns/m
      restLength                            0.03;   //units of m
         }
 

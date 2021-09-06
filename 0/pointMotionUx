@@ -25,10 +25,17 @@ boundaryField
         type            uniformFixedValue;
         uniformValue    constant 0.2;
     }
+
+    movingTopWall
+    {
+        type            slip;
+    }
+
     farFieldMoving
     {
         type            slip;
     }
+
     rightWall
     {
         type            uniformFixedValue;

@@ -15,14 +15,21 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-8
+9
 (
     movingWall
     {
         type            wall;
         inGroups        List<word> 1(wall);
-        nFaces          30;
+        nFaces          10;
         startFace       1140;
+    }
+    movingTopWall
+    {
+        type            wall;
+        inGroups        List<word> 1(wall);
+        nFaces          20;
+        startFace       1150;
     }
     farFieldMoving
     {
