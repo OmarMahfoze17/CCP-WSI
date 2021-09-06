@@ -25,7 +25,12 @@ boundaryField
         type            zeroGradient;
     }
 
-    farFieldMoving
+    movingLowerWall
+    {
+        type            zeroGradient;
+    }
+
+    topField
     {
         type            inletOutlet;
         inletValue      uniform 0;
@@ -37,21 +42,19 @@ boundaryField
         type            zeroGradient;
     }
 
-    axis
-    {
-        type            zeroGradient;
-    }
-
     leftWall
     {
         type            zeroGradient;
     }
 
-    farField
+    bottomWallLeft
     {
-        type            inletOutlet;
-        inletValue      uniform 0;
-        value           uniform 0;
+        type            zeroGradient;
+    }
+
+    bottomWallRight
+    {
+        type            zeroGradient;
     }
 
     back

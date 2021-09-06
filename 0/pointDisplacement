@@ -25,29 +25,35 @@ boundaryField
     {
         type            oscillatingDisplacement;
         axis            (1 0 0);
-        amplitude       (0.01 0 0);
-        omega           2.28;
+        amplitude       (-0.10 0 0);
+        omega           8;
         value           uniform (0 0 0);
     }
 
-    farFieldMoving
+    movingLowerWall
     {
-        type            oscillatingDisplacement;
-        axis            (1 0 0);
-        amplitude       (0.01 0 0);
-        omega           2.28;
-        value           uniform (0 0 0);
+        type            slip;
     }
+
+    topField
+    {
+        type            slip;
+    }
+
+    bottomWallLeft
+    {
+        type            slip;
+    }
+
+    bottomWallRight
+    {
+        type            slip;
+    }
+
     rightWall
     {
         type            uniformFixedValue;
         uniformValue    constant (0 0 0);
-    }
-
-    axis
-    {
-        type            slip;
-        // uniformValue    constant 0;
     }
 
     leftWall
@@ -55,10 +61,7 @@ boundaryField
         type            uniformFixedValue;
         uniformValue    constant (0 0 0);
     }
-    farField
-    {
-        type            slip;
-    }
+
     back
     {
         type            empty;

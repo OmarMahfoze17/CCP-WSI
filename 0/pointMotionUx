@@ -22,13 +22,8 @@ boundaryField
 {
     movingWall
     {
-        type            angularOscillatingDisplacement;
-        axis            (1 0 0);
-        origin          (0 0 0);
-        angle0          0;
-        amplitude       #calc"degToRad(15)";
-        omega           6.28;
-        value           uniform (0 0 0);
+        type            oscillatingDisplacement;
+        uniformValue    constant 0.5;
     }
     farFieldMoving
     {

@@ -27,17 +27,13 @@ boundaryField
         value           $internalField;
     }
 
-    farFieldMoving
+    movingLowerWall
     {
-        type            noSlip;
+        type            movingWallVelocity;
+        value           $internalField;
     }
 
     rightWall
-    {
-        type            noSlip;
-    }
-
-    axis
     {
         type            noSlip;
     }
@@ -47,10 +43,20 @@ boundaryField
         type            noSlip;
     }
 
-    farField
+    topField
     {
         type            pressureInletOutletVelocity;
         value           uniform (0 0 0);
+    }
+
+    bottomWallLeft
+    {
+        type            noSlip;
+    }
+
+    bottomWallRight
+    {
+        type            noSlip;
     }
 
     back
