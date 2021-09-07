@@ -29,8 +29,7 @@ boundaryField
 
     movingTopWall
     {
-        type            movingWallVelocity;
-        value           $internalField;
+        type            noSlip;
     }
 
     farFieldMoving
@@ -51,12 +50,6 @@ boundaryField
     leftWall
     {
         type            noSlip;
-    }
-
-    farField
-    {
-        type            pressureInletOutletVelocity;
-        value           uniform (0 0 0);
     }
 
     back

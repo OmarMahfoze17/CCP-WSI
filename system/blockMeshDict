@@ -17,7 +17,7 @@ FoamFile
 convertToMeters 0.01;
 h1       0.75;
 h2       0.75;
-H         1.5;
+H         2.5;
 x0        -10;
 x1        -7.0;
 x2        -3.5;
@@ -27,8 +27,8 @@ vertices
     ($x1 0 0) //    1
     ($x1 $h1 0) //   2
     ($x0 $h1 0) //    3
-    ($x2 $h2 0) //    4
-    ($x2 $H 0) //    5
+    ($x2 0 0) //    4
+    ($x2 $h1 0) //    5
     ($x1 $H 0) //    6
     ($x0 $H 0) //    7
 
@@ -36,8 +36,8 @@ vertices
     ($x1 0 1) //    9
     ($x1 $h1 1) //   10
     ($x0 $h1 1) //    11
-    ($x2 $h2 1) //    12
-    ($x2 $H 1) //    13
+    ($x2 0 1) //    12
+    ($x2 $h1 1) //    13
     ($x1 $H 1) //    14
     ($x0 $H 1) //    15
 );
@@ -45,8 +45,8 @@ vertices
 blocks
 (
     hex (0 1 2 3 8 9 10 11) (20 10 1) simpleGrading (1 1 1)
-    hex (2 4 5 6 10 12 13 14) (20 10 1) simpleGrading (1 1 1)
-    hex (3 2 6 7 11 10 14 15) (20 10 1) simpleGrading (1 1 1)
+    hex (1 4 5 2 9 12 13 10) (20 10 1) simpleGrading (1 1 1)
+    hex (3 2 6 7 11 10 14 15) (20 20 1) simpleGrading (1 1 1)
 );
 
 edges
@@ -60,7 +60,7 @@ boundary
         type wall;
         faces
         (
-            (1 2 10 9)
+            (2 6 14 10)
         );
     }
 
@@ -69,7 +69,7 @@ boundary
         type wall;
         faces
         (
-            (10 12 4 2)
+            (2 10 13 5)
         );
     }
 
@@ -78,7 +78,7 @@ boundary
         type patch;
         faces
         (
-            (14 13 5 6)
+            (6 7 15 14)
         );
     }
     rightWall
@@ -95,6 +95,7 @@ boundary
         faces
         (
             (0 1 9 8)  //???????????????????????
+            (1 4 12 9)
         );
     }
     leftWall
@@ -106,14 +107,7 @@ boundary
             (3 11 15 7)
         );
     }
-    farField
-    {
-        type patch;
-        faces
-        (
-            (15 14 6 7)
-        );
-    }
+
     back
     {
         type empty;
@@ -121,7 +115,7 @@ boundary
         (
             (0 3 2 1)
             (3 7 6 2)
-            (2 6 5 4)
+            (1 2 5 4)
         );
     }
     front
@@ -131,7 +125,7 @@ boundary
         (
             (8 9 10 11)
             (11 10 14 15)
-            (10 12 13 14)
+            (9 12 13 10)
 
         );
     }

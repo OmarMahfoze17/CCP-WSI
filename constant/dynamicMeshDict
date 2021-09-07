@@ -27,7 +27,8 @@ sixDoFRigidBodyMotionCoeffs
     innerDistance   0.001;
     outerDistance   0.03;
 
-    centreOfMass    (0.055 0.004 0.005);
+    centreOfMass    (-0.07 0.0125 0.005);
+    // centreOfMass    (0 0 0);
 
     // Cuboid dimensions
     Lx              0.035;
@@ -35,7 +36,7 @@ sixDoFRigidBodyMotionCoeffs
     Lz              0.005;
 
     // Density of the solid
-    rhoSolid        3000;
+    rhoSolid        1000;
 
     // Cuboid mass
     mass            #calc "$rhoSolid*$Lx*$Ly*$Lz";
@@ -60,6 +61,7 @@ sixDoFRigidBodyMotionCoeffs
     };
 
     report          on;
+    reportToFile    on;
     accelerationRelaxation 0.7;
     accelerationDamping 0.9;
 
@@ -79,7 +81,7 @@ sixDoFRigidBodyMotionCoeffs
         fixedLine
         {
             sixDoFRigidBodyMotionConstraint line;
-            // centreOfRotation (0.5 0.45 0.1);
+            // centreOfRotation (-0.07 0.012 0.005);
             direction (1 0 0);
         }
 
@@ -98,18 +100,15 @@ sixDoFRigidBodyMotionCoeffs
         spring
         {
             sixDoFRigidBodyMotionRestraint linearSpring;
-     anchor                                (-0.1 .0025 .005);
-     refAttachmentPt                       (-.07 0.0025 0.005);
-     stiffness                             0.5;  //units of N/m
-     damping                               0.02;   //units of Ns/m
-     restLength                            0.03;   //units of m
+           anchor                                (-0.035 .012 .005);
+           refAttachmentPt                       (-.07 0.012 0.005);
+           stiffness                             0.1;  //units of N/m
+           damping                               0.01;   //units of Ns/m
+           restLength                            0.035;   //units of m
+
         }
 
-        // Damper
-        // {
-        //     sixDoFRigidBodyMotionRestraint linearDamper;
-        //     coeff                               0.2;
-        // }
+
     }
 }
 

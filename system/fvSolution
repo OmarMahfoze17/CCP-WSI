@@ -75,6 +75,12 @@ solvers
         nSweeps         1;
     }
 
+    // cellDisplacement
+    // {   solver           GAMG;
+    //     smoother         GaussSeidel;
+    //     tolerance        1e-7;
+    //     relTol           0.01;
+    // }
     // cellMotionUx
     // {
     //     solver          PCG;
@@ -83,20 +89,20 @@ solvers
     //     relTol          0;
     // }
     //
-    cellMotionUxFinal
-    {
-        solver          PCG;
-        preconditioner
-        {
-            preconditioner  GAMG;
-            tolerance       2e-09;
-            relTol          0;
-            nVcycles        2;
-            smoother        DICGaussSeidel;
-            nPreSweeps      2;
-        }
-
-    }
+    // cellMotionUxFinal
+    // {
+    //     solver          PCG;
+    //     preconditioner
+    //     {
+    //         preconditioner  GAMG;
+    //         tolerance       2e-09;
+    //         relTol          0;
+    //         nVcycles        2;
+    //         smoother        DICGaussSeidel;
+    //         nPreSweeps      2;
+    //     }
+    //
+    // }
 }
 
 PIMPLE
@@ -106,7 +112,7 @@ PIMPLE
     nNonOrthogonalCorrectors 0;
     correctPhi      no;
 
-    pRefPoint       (0 0 0);
+    pRefPoint       (-0.1 0 0);
     pRefValue       1e5;
 }
 

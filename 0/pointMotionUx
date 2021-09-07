@@ -53,10 +53,7 @@ boundaryField
         type            uniformFixedValue;
         uniformValue    constant 0;
     }
-    farField
-    {
-        type            slip;
-    }
+
     back
     {
         type            empty;

@@ -50,13 +50,6 @@ boundaryField
         type            zeroGradient;
     }
 
-    farField
-    {
-        type            inletOutlet;
-        inletValue      uniform 0;
-        value           uniform 0;
-    }
-
     back
     {
         type            empty;
