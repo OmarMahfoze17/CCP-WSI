@@ -14,25 +14,25 @@ FoamFile
     object      dynamicMeshDict;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
+// dynamicFvMesh   staticFvMesh;
 dynamicFvMesh   dynamicMotionSolverFvMesh;
 
 motionSolverLibs ("libsixDoFRigidBodyMotion.so");
 
-motionSolver        sixDoFRigidBodyMotion;
+solver        sixDoFRigidBodyMotion;
 
 sixDoFRigidBodyMotionCoeffs
 {
     patches         (movingWall);
-    innerDistance   0.001;
-    outerDistance   0.03;
+    innerDistance   .0;
+    outerDistance   .4;
 
-    centreOfMass    (-0.07 0.0125 0.005);
+    centreOfMass    (0 0.2 0.5);
     // centreOfMass    (0 0 0);
 
     // Cuboid dimensions
-    Lx              0.035;
-    Ly              0.007;
+    Lx              0.35;
+    Ly              0.07;
     Lz              0.005;
 
     // Density of the solid
@@ -62,8 +62,8 @@ sixDoFRigidBodyMotionCoeffs
 
     report          on;
     reportToFile    on;
-    accelerationRelaxation 0.7;
-    accelerationDamping 0.9;
+    accelerationRelaxation 0.2;
+    accelerationDamping 0.5;
 
     solver
     {
@@ -100,11 +100,11 @@ sixDoFRigidBodyMotionCoeffs
         spring
         {
             sixDoFRigidBodyMotionRestraint linearSpring;
-           anchor                                (-0.035 .012 .005);
-           refAttachmentPt                       (-.07 0.012 0.005);
-           stiffness                             0.1;  //units of N/m
-           damping                               0.01;   //units of Ns/m
-           restLength                            0.035;   //units of m
+           anchor                                (1 .2 .5);
+           refAttachmentPt                       (0 .2 0.5);
+           stiffness                             200;  //units of N/m
+           damping                               20;   //units of Ns/m
+           restLength                            1;   //units of m
 
         }
 

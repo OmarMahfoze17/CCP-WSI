@@ -14,29 +14,29 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-convertToMeters 0.01;
-h1       0.75;
-h2       0.75;
-H         2.5;
-x0        -10;
-x1        -7.0;
-x2        -3.5;
+convertToMeters 1;
+y0        -0.7;
+h1        -0.;
+H         0.45;
+x0        -4;
+x1        0;
+x2        4;
 vertices
 (
-    ($x0 0 0) //    0
-    ($x1 0 0) //    1
+    ($x0 $y0 0) //    0
+    ($x1 $y0 0) //    1
     ($x1 $h1 0) //   2
     ($x0 $h1 0) //    3
-    ($x2 0 0) //    4
+    ($x2 $y0 0) //    4
     ($x2 $h1 0) //    5
     ($x1 $H 0) //    6
     ($x0 $H 0) //    7
 
-    ($x0 0 1) //    8
-    ($x1 0 1) //    9
+    ($x0 $y0 1) //    8
+    ($x1 $y0 1) //    9
     ($x1 $h1 1) //   10
     ($x0 $h1 1) //    11
-    ($x2 0 1) //    12
+    ($x2 $y0 1) //    12
     ($x2 $h1 1) //    13
     ($x1 $H 1) //    14
     ($x0 $H 1) //    15
@@ -44,9 +44,9 @@ vertices
 
 blocks
 (
-    hex (0 1 2 3 8 9 10 11) (20 10 1) simpleGrading (1 1 1)
-    hex (1 4 5 2 9 12 13 10) (20 10 1) simpleGrading (1 1 1)
-    hex (3 2 6 7 11 10 14 15) (20 20 1) simpleGrading (1 1 1)
+    hex (0 1 2 3 8 9 10 11) (40 40 1) simpleGrading (1 1 1)
+    hex (1 4 5 2 9 12 13 10) (40 40 1) simpleGrading (3 1 1)
+    hex (3 2 6 7 11 10 14 15) (40 20 1) simpleGrading (1 1 1)
 );
 
 edges
@@ -73,7 +73,7 @@ boundary
         );
     }
 
-    farFieldMoving
+    atmosphere
     {
         type patch;
         faces
@@ -81,7 +81,7 @@ boundary
             (6 7 15 14)
         );
     }
-    rightWall
+    outlet
     {
         type wall;
         faces
@@ -98,7 +98,7 @@ boundary
             (1 4 12 9)
         );
     }
-    leftWall
+    inlet
     {
         type patch;
         faces

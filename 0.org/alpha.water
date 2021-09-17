@@ -32,7 +32,9 @@ boundaryField
 
     atmosphere
     {
-        type            zeroGradient;
+        type            inletOutlet;
+        inletValue      uniform 0;
+        value           uniform 0;
     }
 
     outlet
@@ -47,7 +49,11 @@ boundaryField
 
     inlet
     {
-        type            zeroGradient;
+        type            waveAlpha;
+        refValue        uniform 0;
+        refGrad         uniform 0;
+        valueFraction   uniform 1;
+        value           uniform 0;
     }
 
     back

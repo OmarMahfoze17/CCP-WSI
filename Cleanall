@@ -1,0 +1,11 @@
+#!/bin/bash
+rm -r *.[0-9]* &>/dev/null
+rm -r [1-9]* &>/dev/null
+rm -r 0 &>/dev/null
+rm -r waveGaugesNProbes &>/dev/null
+rm -r surfaceElevation* &>/dev/null
+rm -r postProcessedWaves2Foam &>/dev/null
+rm log.* &>/dev/null
+rm constant/polyMesh/[c-z]* &>/dev/null
+rm constant/polyMesh/boundary &>/dev/null
+rm constant/waveProperties &>/dev/null

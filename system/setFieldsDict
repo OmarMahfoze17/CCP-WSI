@@ -31,14 +31,6 @@ regions
         );
     }
 
-    boxToCell
-    {
-        box (-.95 0.0 -1) (-.08 .014 1);
-        fieldValues
-        (
-            volScalarFieldValue alpha.water 1
-        );
-    }
 );
 
 

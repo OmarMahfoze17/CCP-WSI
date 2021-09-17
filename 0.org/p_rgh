@@ -10,11 +10,11 @@ FoamFile
     version     2.0;
     format      ascii;
     class       volScalarField;
-    object      alpha.water;
+    object      p_rgh;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 0 0 0 0 0 0];
+dimensions      [1 -1 -2 0 0 0 0];
 
 internalField   uniform 0;
 
@@ -22,17 +22,20 @@ boundaryField
 {
     movingWall
     {
-        type            zeroGradient;
+        type            fixedFluxPressure;
+        value           uniform 0;
     }
 
     movingTopWall
     {
-        type            zeroGradient;
+        type           fixedFluxPressure;
+        value           uniform 0;
     }
 
     atmosphere
     {
-        type            zeroGradient;
+        type            totalPressure;
+        p0              uniform 0;
     }
 
     outlet
@@ -42,7 +45,8 @@ boundaryField
 
     axis
     {
-        type            zeroGradient;
+        type            fixedFluxPressure;
+        value           uniform 0;
     }
 
     inlet
@@ -50,18 +54,16 @@ boundaryField
         type            zeroGradient;
     }
 
+
     back
     {
         type            empty;
     }
-
     front
     {
         type            empty;
     }
+
 }
-
-
-// ************************************************************************* //
 
 // ************************************************************************* //

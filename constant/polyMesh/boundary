@@ -1,15 +1,16 @@
 /*--------------------------------*- C++ -*----------------------------------*\
-  =========                 |
-  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Version:  8
-     \\/     M anipulation  |
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1906                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 FoamFile
 {
     version     2.0;
     format      binary;
     class       polyBoundaryMesh;
+    arch        "LSB;label=32;scalar=64";
     location    "constant/polyMesh";
     object      boundary;
 }
@@ -20,55 +21,55 @@ FoamFile
     movingWall
     {
         type            wall;
-        inGroups        List<word> 1(wall);
+        inGroups        1(wall);
         nFaces          20;
-        startFace       1530;
+        startFace       7860;
     }
     movingTopWall
     {
         type            wall;
-        inGroups        List<word> 1(wall);
-        nFaces          20;
-        startFace       1550;
+        inGroups        1(wall);
+        nFaces          40;
+        startFace       7880;
     }
-    farFieldMoving
+    atmosphere
     {
         type            patch;
-        nFaces          20;
-        startFace       1570;
+        nFaces          40;
+        startFace       7920;
     }
-    rightWall
+    outlet
     {
         type            wall;
-        inGroups        List<word> 1(wall);
-        nFaces          10;
-        startFace       1590;
+        inGroups        1(wall);
+        nFaces          40;
+        startFace       7960;
     }
     axis
     {
         type            patch;
-        nFaces          40;
-        startFace       1600;
+        nFaces          80;
+        startFace       8000;
     }
-    leftWall
+    inlet
     {
         type            patch;
-        nFaces          30;
-        startFace       1640;
+        nFaces          60;
+        startFace       8080;
     }
     back
     {
         type            empty;
-        inGroups        List<word> 1(empty);
-        nFaces          800;
-        startFace       1670;
+        inGroups        1(empty);
+        nFaces          4000;
+        startFace       8140;
     }
     front
     {
         type            empty;
-        inGroups        List<word> 1(empty);
-        nFaces          800;
-        startFace       2470;
+        inGroups        1(empty);
+        nFaces          4000;
+        startFace       12140;
     }
 )
 
